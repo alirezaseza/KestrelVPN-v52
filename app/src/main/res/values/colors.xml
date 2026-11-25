@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+<color name="kestrel_primary">#3D5AFE</color>
+<color name="kestrel_primary_dark">#1B2447</color>
+<color name="kestrel_accent">#A5BEFF</color>
+<color name="kestrel_surface_light">#EFF2FA</color>
+<color name="kestrel_surface_dark">#04050D</color>
+<color name="ic_launcher_background">#3D5AFE</color>
+<color name="ic_launcher_foreground">#FFFFFF</color>
+</resources>

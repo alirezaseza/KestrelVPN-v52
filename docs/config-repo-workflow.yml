@@ -1,0 +1,18 @@
+# Copy into YOUR config repo as .github/workflows/validate.yml.
+# On every push it cleans the subscription (drops unsupported/duplicate links) so the app
+# only benchmarks configs it can actually run.
+name: Clean subscription
+on:
+  push: { paths: ["raw/**"] }
+  schedule: [{ cron: "0 */6 * * *" }]
+permissions: { contents: write }
+jobs:
+  clean:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: curl -fsSL -o validate.py https://raw.githubusercontent.com/<you>/<kestrel-repo>/main/scripts/validate_subscription.py
+      - run: python3 validate.py raw/all.txt -o sub/all.txt
+      - run: |
+          git config user.name github-actions; git config user.email actions@github.com
+          git add sub && (git diff --cached --quiet || git commit -m "Update cleaned subscription" && git push)
