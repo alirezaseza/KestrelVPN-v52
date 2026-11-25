@@ -19,7 +19,7 @@ jobs:
           echo "ANDROID_NDK_HOME=$ANDROID_HOME/ndk/27.2.12479018" >> "$GITHUB_ENV"
       - name: Cache libbox
         id: libbox
-        uses: actions/cache@v4
+        uses: actions/cache@v6
         with:
           path: app/libs/libbox.aar
           key: libbox-${{ hashFiles('scripts/build-libbox.sh') }}
